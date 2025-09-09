@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} About Us 😂 {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+  <!-- Page Heading -->
+  <h2 class="text-center fw-bold mb-4" style="color:#ff4081; font-family: 'Comic Sans MS';">
+    😂 About Our Meme World 🌍
+  </h2>
+
+  <div class="row align-items-center">
+    <div class="col-md-6 mb-4">
+      <!-- Animated Funny Box Instead of Image -->
+      <div class="p-4 text-light rounded shadow-lg text-center meme-box">
+        <h4 class="fw-bold glow-text">⚡ Welcome ⚡</h4>
+        <p class="mt-3" style="font-size:1rem; line-height:1.6;">
+          Insert <b>boring life</b> ➡ Get <b>endless laughter</b> 🤣  
+          Works faster than coffee ☕ + stronger than WiFi signals 📶  
+        </p>
+        <p class="fw-bold text-warning shake-text">Caution: Overuse may cause uncontrollable giggles! 😂</p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <p style="font-size:1.1rem; line-height:1.8;">
+        Welcome to <strong>The Meme Zone</strong> 🎉 — the funniest corner of the internet!  
+        Here we don’t just scroll, we <span style="color:#ff9800;">LOL</span>,  
+        we don’t just share, we <span style="color:#03a9f4;">spread happiness</span>.  
+      </p>
+      <p style="font-size:1.1rem; line-height:1.8;">
+        Our mission? Simple 👉 <b>Make the world laugh one meme at a time!</b>  
+        Life is too short for boring websites, so we filled ours with endless 
+        🤣 giggles, 😂 ROFLs, and 😜 sarcasm.  
+      </p>
+      <p class="fw-bold text-success">Warning: Too much browsing here may cause stomach pain due to over-laughing! 🤯😂</p>
+    </div>
+  </div>
+
+  <!-- Funny Points -->
+  <div class="mt-5">
+    <h4 class="fw-bold mb-3">Why We Exist? 👇</h4>
+    <ul style="font-size:1.1rem; line-height:2;">
+      <li>To turn your <b>Monday blues</b> into <span style="color:#ff5722;">Meme-day smiles</span> 😎</li>
+      <li>To make you laugh harder than your <b>friend’s bad jokes</b> 😂</li>
+      <li>Because therapy is expensive, but memes are <b>free</b> 🤪</li>
+      <li>We believe in <b>LOL-ism</b> → the religion of laughter 🙌</li>
+    </ul>
+  </div>
+  
+
+  <!-- Footer Joke -->
+  <div class="text-center mt-5 p-4 bg-light rounded shadow">
+    <h5>😏 Still reading About Page?</h5>
+    <p class="mb-0">Bruh... go enjoy some memes already! 🚀🤣</p>
+    <p class="mb-0">Contact us on : <b style="color:#d81b60;">nityamsingh2005@gmail.com</b></p>
+  </div>
+
+</div>
+
+<!-- Custom CSS for animation -->
+<style>
+  .meme-box {
+    background: linear-gradient(135deg, #1e1e2f, #29294d);
+    border: 2px solid #ffeb3b;
+    animation: pulse 3s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 10px #ffeb3b; }
+    50% { box-shadow: 0 0 30px #ff4081; }
+    100% { box-shadow: 0 0 10px #ffeb3b; }
+  }
+
+  .glow-text {
+    color: #ffeb3b;
+    text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ff4081, 0 0 30px #03a9f4;
+    animation: glow 2s infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #ffeb3b; }
+    to { text-shadow: 0 0 25px #03a9f4, 0 0 35px #ff4081; }
+  }
+
+  .shake-text {
+    display: inline-block;
+    animation: shake 1s infinite;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-2px); }
+  }
+</style>
+{% endblock %}

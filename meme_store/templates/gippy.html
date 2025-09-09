@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} gippy{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    {% for image in gipp %}
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="card shadow-lg border-0 h-100" 
+           style="border-radius: 20px; background-color: #fff6d9;">
+        
+        <!-- Meme Video -->
+        {% if image.video %}
+        <video class="card-img-top fixed-media" controls preload ="none">
+          <source src="{{ image.video.url }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        {% endif %}
+
+        <!-- Meme Image -->
+       {% if image.photo %}
+  <img src="{{ image.photo.url }}" class="card-img-top fixed-media" alt="Funny Meme" style="object-fit: contain;">
+{% endif %}
+
+        <!-- Card Body -->
+        <div class="card-body text-center d-flex flex-column justify-content-between">
+          <!-- Meme Name -->
+          <h5 class="card-title" style="font-family: 'Comic Sans MS'; color: #ff4081;">
+            😂 {{ image.title }}
+          </h5>
+
+          <!-- Like + Download Buttons in One Row -->
+          <div class="d-flex justify-content-center gap-2 mt-2">
+            
+            <!-- Like Button -->
+            <form method="post" action="{% url 'like_meme' image.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-danger fw-bold" style="border-radius: 50px;">
+                ❤️ Like ({{ image.likes }})
+              </button>
+            </form>
+
+            <!-- Download Button (Image/Video) -->
+            {% if image.photo %}
+              <a href="{{ image.photo.url }}" download 
+                 class="btn btn-warning fw-bold" style="border-radius: 50px;">
+                ⬇️ Download
+              </a>
+            {% elif image.video %}
+              <a href="{{ image.video.url }}" download 
+                 class="btn btn-warning fw-bold" style="border-radius: 50px;">
+                ⬇️ Download
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .fixed-media {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+</style>
+{% endblock %}

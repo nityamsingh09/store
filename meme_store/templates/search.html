@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Search Results {% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <!-- Search Bar -->
+  <form method="get" action="{% url 'search' %}" class="d-flex mb-4">
+    <input type="text" name="q" value="{{ query }}" 
+           class="form-control me-2" placeholder="Search memes, gifs, videos..." required>
+    <button type="submit" class="btn btn-primary">🔍 Search</button>
+  </form>
+
+  <h3 class="mb-3">Results for "<span class="text-success">{{ query }}</span>"</h3>
+
+  {% if memes or giphys %}
+  <div class="row">
+    <!-- Meme Results -->
+    {% for m in memes %}
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="card shadow border-0 h-100" style="border-radius: 15px;">
+        {% if m.photo %}
+        <img src="{{ m.photo.url }}" class="card-img-top fixed-media" alt="{{ m.title }}">
+        {% elif m.video %}
+        <video class="card-img-top fixed-media" controls preload="metadata">
+          <source src="{{ m.video.url }}" type="video/mp4">
+        </video>
+        {% endif %}
+        <div class="card-body text-center">
+          <h6 class="card-title">{{ m.title }}</h6>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <!-- Giphy Results -->
+    {% for g in giphys %}
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="card shadow border-0 h-100" style="border-radius: 15px;">
+        {% if g.photo %}
+        <img src="{{ g.photo.url }}" class="card-img-top fixed-media" alt="{{ g.title }}">
+        {% elif g.video %}
+        <video class="card-img-top fixed-media" controls preload="metadata">
+          <source src="{{ g.video.url }}" type="video/mp4">
+        </video>
+        {% endif %}
+        <div class="card-body text-center">
+          <h6 class="card-title">{{ g.title }}</h6>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+    <p class="text-danger">😔 No results found.</p>
+  {% endif %}
+</div>
+
+<style>
+  .fixed-media {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+</style>
+{% endblock %}
