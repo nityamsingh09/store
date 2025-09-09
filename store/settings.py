@@ -29,7 +29,12 @@ SECRET_KEY = 'django-insecure-tt!9zsk59#m8n_bd#(+&6!ms70dzra!vj&v%w9ev(dd9gf9xqz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['your-domain.com', 'www.your-domain.com', 'render-app-url.onrender.com']
+ALLOWED_HOSTS = [
+    'store-4-04sr.onrender.com',  # Render URL
+    '127.0.0.1',                  # Local testing
+    'localhost',                   # Local testing
+    '*''
+]
 
 
 # Application definition
@@ -130,3 +135,4 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
